@@ -19,7 +19,7 @@ set :backup_path, "/home/#{fetch(:deploy_user)}/Backup"
 set :deploy_via, :remote_cache
 
 set :rvm_type, :user
-set :rvm_ruby_version, '3.0.0'
+set :rvm_ruby_version, '3.1.0'
 
 set :ssh_options, {
   forward_agent: true,
@@ -50,7 +50,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push("log", "tmp/pids", "tmp/cache", "
 # set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
-set :keep_releases, 3
+set :keep_releases, 4
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
