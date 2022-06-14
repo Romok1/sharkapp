@@ -25,7 +25,7 @@ pipeline {
       stage('install') {
         steps {
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
-               sh 'source ~/.bashrc'
+               sh '. ~/.bashrc'
                sh "bundle install"
                sh '/bin/bash --login'
                sh 'rvm use 3.1.0' }
