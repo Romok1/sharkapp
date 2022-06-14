@@ -1,6 +1,6 @@
 pipeline {
-   //agent any
-   agent { docker { image 'ruby:3.1.0' } }
+   agent any
+   //agent { docker { image 'ruby:3.1.0' } }
    stages {
       stage('git repo & clean out') {
         steps {
