@@ -1,8 +1,9 @@
 pipeline {
-   agent any
+   //agent any
+   agent { docker { image 'ruby:3.1.0' } }
    stages {
-    stage('git repo & clean out') {
-      steps {
+      stage('git repo & clean out') {
+        steps {
            //sh "sudo rm -r sharkapp"
            //sh "git clone git@github.com:Romok1/sharkapp.git"
            sh "git branch -a"
@@ -22,6 +23,11 @@ pipeline {
            //sh 'git merge'
            }
       }
+      stage('build') {
+        steps {
+          sh 'bundle install'
+      }
+    }
       stage('install') {
         steps {
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
