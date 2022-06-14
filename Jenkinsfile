@@ -3,7 +3,7 @@ pipeline {
    stages {
     stage('git repo & clean out') {
       steps {
-           sh "sudo rm -r *"
+           sh "sudo rm -r sharkapp"
            sh "git clone git@github.com:Romok1/sharkapp.git"
            sh "git checkout develop"
            sh 'echo "seen"'
@@ -23,7 +23,7 @@ pipeline {
       }
       stage('install') {
         steps {
-           dir('/${WORKSPACE}/${env.JOB_NAME}@script/sharkapp') {
+           dir('/var/lib/jenkins/workspace/${env.JOB_NAME}/sharkapp') {
                sh "bundle install" }
        }
     }
