@@ -3,9 +3,10 @@ pipeline {
    stages {
     stage('git repo & clean out') {
       steps {
-           sh "sudo rm -r sharkapp"
-           sh "git clone git@github.com:Romok1/sharkapp.git"
-           sh "git checkout develop"
+           //sh "sudo rm -r sharkapp"
+           //sh "git clone git@github.com:Romok1/sharkapp.git"
+           sh "git branch -a"
+           //sh "git checkout develop"
            sh 'echo "seen"'
            // The below will clone your repo and will be checked out to master branch by default.
            // git credentialsId: 'jenkins-user-github', url: 'git@github.com:Romok1/sharkapp.git'
@@ -23,12 +24,11 @@ pipeline {
       }
       stage('install') {
         steps {
-           dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
+          // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
                sh 'source ~/.bashrc'
                sh "bundle install"
                sh '/bin/bash --login'
                sh 'rvm use 3.1.0' }
-       }
     }
   }
 }
