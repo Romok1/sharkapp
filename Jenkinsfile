@@ -1,6 +1,6 @@
 pipeline {
    agent any
-   //agent { docker { image 'ruby:3.1.0' } }
+   // agent { docker { image 'ruby:3.1.0' } }
    stages {
       stage('git repo & clean out') {
         steps {
@@ -43,6 +43,6 @@ pipeline {
                  sh '/bin/bash --login'
                  sh 'rvm use 3.1.0'
                  sh "bundle install" }
+      }
     }
-  }
 }
