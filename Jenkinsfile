@@ -1,7 +1,7 @@
 pipeline {
    // agent any
    agent none
-  //  {  label { image 'ruby:3.1.0-bullseye' }  }
+  //  {  label { image 'ruby:3.1.0-bullseye' } }
    stages {
       stage('git repo & clean out') {
         steps {
@@ -25,11 +25,12 @@ pipeline {
            }
       }
       stage('install') {
-        steps {
            agent {         
             docker {          
                   image 'ruby'         
-            }    
+            } 
+         }
+          steps {  
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
                //sh '. ~/.bashrc'
                sh '#!/bin/bash -xl'
