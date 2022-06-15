@@ -27,7 +27,9 @@ pipeline {
       stage('install') {
            agent {         
             docker {          
-                  image 'ruby'         
+                 label 'ruby:3.1.0-bullseye'
+                 image 'ruby:3.1.0-bullseye'
+                 args ‘-v /tmp:/tmp -p 4243:4243’
             } 
          }
           steps {  
