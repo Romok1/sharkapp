@@ -56,7 +56,7 @@ pipeline {
                  sh "bundle install" }
       }
       stage('Clone from Git') {
-        try {
+        steps {
             git branch: 'develop',
                 url: 'git@github.com:Romok1/sharkapp.git'
         } 
