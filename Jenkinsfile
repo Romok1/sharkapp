@@ -23,11 +23,6 @@ pipeline {
            //sh 'git merge'
            }
       }
-      stage('build') {
-        steps {
-          sh 'bundle install'
-      }
-    }
       stage('install') {
         steps {
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
