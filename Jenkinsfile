@@ -48,8 +48,36 @@ pipeline {
                          sh """
                              docker exec myruby \
                              mkdir /home/testspace \
+                         """
+                     }
+                 }
+         }
+      stage('change directory') {
+             steps {
+                 script {
+                         sh """
+                             docker exec myruby \
+                             -ti -w /home/testspace \
+                         """
+                     }
+                 }
+         }
+      stage('Git clone') {
+             steps {
+                 script {
+                         sh """
+                             docker exec myruby \
                              git clone git@github.com:Romok1/sharkapp.git \
-                             /bin/bash ls -la \
+                         """
+                     }
+                 }
+         }
+      stage('Git list') {
+             steps {
+                 script {
+                         sh """
+                             docker exec myruby \
+                             sh "ls -lart ./*" \
                          """
                      }
                  }
