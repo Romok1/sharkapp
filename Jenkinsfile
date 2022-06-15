@@ -47,7 +47,7 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             mkdir /home/testspace \
+                             mkdir /home/testspace
                          """
                      }
                  }
@@ -57,7 +57,7 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             -ti -w /home/testspace \
+                             -ti -w /home/testspace
                          """
                      }
                  }
@@ -67,7 +67,7 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             git clone git@github.com:Romok1/sharkapp.git \
+                             git clone git@github.com:Romok1/sharkapp.git
                          """
                      }
                  }
@@ -77,7 +77,7 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             sh "ls -lart ./*" \
+                             sh "ls -lart ./*"
                          """
                      }
                  }
