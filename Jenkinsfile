@@ -55,15 +55,15 @@ pipeline {
                      }
                  }
          }
-      stage('change directory') {
-             steps {
-                 script {
-                         sh """
-                             docker run  -w  /home/testspace -i -t ruby pwd bash
-                         """
-                     }
-                 }
-         }
+     // stage('change directory') {
+    //         steps {
+    //             script {
+    //                     sh """
+    //                         docker run  -w  /home/testspace -i -t ruby pwd bash
+    //                     """
+    //                 }
+    //             }
+    //     }
       stage('Git clone') {
              steps {
                  script {
