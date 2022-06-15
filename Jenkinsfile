@@ -1,6 +1,8 @@
 pipeline {
-   agent any
-   // agent { docker { image 'ruby:3.1.0' } }
+   // agent any
+   agent { 
+      docker { image 'ruby:3.1.0' } 
+   }
    stages {
       stage('git repo & clean out') {
         steps {
@@ -39,5 +41,15 @@ pipeline {
                  sh 'rvm use 3.1.0'
                  sh "bundle install" }
       }
+      stage('Clone from Git') {
+        try {
+            git branch: 'develop',
+                url: 'git@github.com:Romok1/sharkapp.git'
+        } 
+         catch (Exception ex) {
+            println("Unable to git clone: ${ex}")
+            error 'Git Clone failure'
+        }
+    }
     }
 }
