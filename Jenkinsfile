@@ -31,11 +31,11 @@ pipeline {
                  sh 'export PATH=$PATH:/var/lib/jenkins/.rvm/bin'
                  sh 'PATH=$PATH:$HOME/.rvm/bin'
                  sh '#!/bin/bash -l'
+                 sh '/bin/bash --login'
                  sh 'set -x'
                  sh 'set -e'
                  //sh 'rvm use 3.1.0'
                 //  sh "bundle install"
-                 sh '/bin/bash --login'
                  sh 'rvm use 3.1.0'
                  sh "bundle install" }
       }
