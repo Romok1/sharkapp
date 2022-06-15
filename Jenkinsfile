@@ -1,7 +1,8 @@
 pipeline {
-   // agent any
-   agent none
-  //  {  label { image 'ruby:3.1.0-bullseye' } }
+   agent any
+   //agent { 
+     // docker { image 'ruby:3.1.0-bullseye' } 
+   //}
    stages {
       stage('git repo & clean out') {
         steps {
@@ -24,15 +25,22 @@ pipeline {
            //sh 'git merge'
            }
       }
+      stage('Setting up OWASP ZAP docker container') {
+             steps {
+                 script {
+                         echo "Pulling up ruby "
+                         sh 'docker pull ruby'
+                         echo "Starting container --> Start"
+                         sh """
+                         docker run -dt --name myruby \
+                         ruby \
+                         /bin/bash
+                         """
+                 }
+             }
+       }
       stage('install') {
-           agent {         
-            docker {          
-                 label 'ruby:3.1.0-bullseye'
-                 image 'ruby:3.1.0-bullseye'
-                // args ‘-v /tmp:/tmp -p 4243:4243’
-            } 
-         }
-          steps {  
+        steps {
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
                //sh '. ~/.bashrc'
                sh '#!/bin/bash -xl'
@@ -48,14 +56,15 @@ pipeline {
                  sh "bundle install" }
       }
       stage('Clone from Git') {
-        steps {
+        try {
             git branch: 'develop',
                 url: 'git@github.com:Romok1/sharkapp.git'
         } 
-         //catch (Exception ex) {
-          //  println("Unable to git clone: ${ex}")
-          //  error 'Git Clone failure'
-        //}
       }
+     //    catch (Exception ex) {
+     //       println("Unable to git clone: ${ex}")
+     //       error 'Git Clone failure'
+   //     }
+    }
     }
 }
