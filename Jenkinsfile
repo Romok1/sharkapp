@@ -1,8 +1,7 @@
 pipeline {
    // agent any
-   agent { 
-      docker { image 'ruby:3.1.0-bullseye' } 
-   }
+   agent none
+  //  {  label { image 'ruby:3.1.0-bullseye' }  }
    stages {
       stage('git repo & clean out') {
         steps {
@@ -27,6 +26,10 @@ pipeline {
       }
       stage('install') {
         steps {
+           agent {         
+            docker {          
+                  image 'ruby'         
+            }    
           // dir('/var/lib/jenkins/workspace/githubcheckoutfirstpipe/sharkapp') {
                //sh '. ~/.bashrc'
                sh '#!/bin/bash -xl'
@@ -42,7 +45,7 @@ pipeline {
                  sh "bundle install" }
       }
       stage('Clone from Git') {
-        try {
+        steps {
             git branch: 'develop',
                 url: 'git@github.com:Romok1/sharkapp.git'
         } 
