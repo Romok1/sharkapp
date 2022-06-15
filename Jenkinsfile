@@ -47,7 +47,9 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             mkdir /home/testspace
+                             mkdir /home/testspace \
+                             git clone git@github.com:Romok1/sharkapp.git \
+                             ls -la
                          """
                      }
                  }
