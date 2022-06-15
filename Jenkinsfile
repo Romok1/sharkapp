@@ -50,10 +50,10 @@ pipeline {
             git branch: 'develop',
                 url: 'git@github.com:Romok1/sharkapp.git'
         } 
-         catch (Exception ex) {
-            println("Unable to git clone: ${ex}")
-            error 'Git Clone failure'
-        }
-    }
+         //catch (Exception ex) {
+          //  println("Unable to git clone: ${ex}")
+          //  error 'Git Clone failure'
+        //}
+      }
     }
 }
