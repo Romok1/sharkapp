@@ -29,7 +29,7 @@ pipeline {
             docker {          
                  label 'ruby:3.1.0-bullseye'
                  image 'ruby:3.1.0-bullseye'
-                 args ‘-v /tmp:/tmp -p 4243:4243’
+                // args ‘-v /tmp:/tmp -p 4243:4243’
             } 
          }
           steps {  
