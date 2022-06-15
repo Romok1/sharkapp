@@ -60,7 +60,8 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             -w /home/testspace
+                             -w /home/testspace \
+                             /bin/bash
                          """
                      }
                  }
