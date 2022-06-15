@@ -47,6 +47,9 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
+                             rm -r /home/testspace
+                      
+                             docker exec myruby \
                              mkdir /home/testspace
                          """
                      }
