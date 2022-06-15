@@ -59,9 +59,7 @@ pipeline {
              steps {
                  script {
                          sh """
-                             docker run -i -t ruby \ 
-                            --tty $(-w  /home/testspace)  pwd \
-                             /bin/bash
+                             docker run  -w  /home/testspace -i -t ruby pwd bash
                          """
                      }
                  }
