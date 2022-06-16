@@ -32,7 +32,7 @@ pipeline {
                         sh 'docker pull ruby'
                       echo "Starting container --> Start"
                        sh """
-                       docker run -dt --name myruby \
+                       docker run -dt --name ruby \
                        ruby \
                       /bin/bash
                       """
@@ -46,10 +46,10 @@ pipeline {
              steps {
                  script {
                          sh """
-                        //     docker exec myruby \
-                        //     rm -r /home/testspace
+                             docker exec ruby \
+                             rm -r /home/testspace
                       
-                             docker exec myruby \
+                             docker exec ruby \
                              mkdir /home/testspace
                          """
                      }
@@ -68,7 +68,7 @@ pipeline {
              steps {
                  script {
                          sh """
-                             docker exec myruby \
+                             docker exec ruby \
                              git clone git@github.com:Romok1/sharkapp.git
                          """
                      }
@@ -78,7 +78,7 @@ pipeline {
              steps {
                  script {
                          sh """
-                             docker exec myruby \
+                             docker exec ruby \
                              ls -lart ./*
                          """
                      }
