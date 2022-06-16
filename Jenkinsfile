@@ -25,20 +25,20 @@ pipeline {
            //sh 'git merge'
            }
       }
-       stage('Setting up OWASP ZAP docker container') {
-            steps {
-                script {
-                        echo "Pulling up ruby "
-                        sh 'docker pull ruby'
-                      echo "Starting container --> Start"
-                       sh """
-                       docker run -dt --name ruby \
-                       ruby \
-                      /bin/bash
-                      """
-                }
-             }
-      }
+     //  stage('Setting up OWASP ZAP docker container') {
+     //       steps {
+     //           script {
+     //                   echo "Pulling up ruby "
+     //                   sh 'docker pull ruby'
+     //                 echo "Starting container --> Start"
+     //                  sh """
+     //                  docker run -dt --name ruby \
+     //                  ruby \
+     //                 /bin/bash
+     //                 """
+     //           }
+     //        }
+     // }
       stage('Prepare wrk directory') {
              //when {
               //           environment name : 'GENERATE_REPORT', value: 'true'
@@ -46,8 +46,8 @@ pipeline {
              steps {
                  script {
                          sh """
-                             docker exec ruby \
-                             rm -r /home/testspace
+               //              docker exec ruby \
+              //               rm -r /home/testspace
                       
                              docker exec ruby \
                              mkdir /home/testspace
