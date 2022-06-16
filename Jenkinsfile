@@ -79,7 +79,7 @@ pipeline {
                  script {
                          sh """
                              docker exec myruby \
-                             sh "ls -lart ./*"
+                             ls -lart ./*
                          """
                      }
                  }
@@ -112,3 +112,4 @@ pipeline {
    //     }
    }
 }
+\
